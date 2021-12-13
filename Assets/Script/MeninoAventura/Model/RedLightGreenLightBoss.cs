@@ -16,7 +16,6 @@ namespace Model
         void Update()
         {
             HeadRotate();
-
         }
 
         private void HeadRotate()
