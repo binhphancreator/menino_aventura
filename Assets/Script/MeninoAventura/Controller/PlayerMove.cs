@@ -7,16 +7,29 @@ namespace Controller
 {
     public class PlayerMove : BaseController
     {
-
+        public float InputX;
+	    public float InputZ;
         public float MoveSpeed = 6f;
         public CharacterController Controller;
         public Transform cam;
         public float gravity = -10f;
         Vector3 fall;
         public float jumpHigh = 4f;
-        public Transform groundCheck;
+        //public Transform groundCheck;
         public LayerMask layer;
         bool isGround;
+        public Animator anim;
+        public float Speed;
+        public float allowPlayerRotation = 0.1f;
+        [Header("Animation Smoothing")]
+        [Range(0, 1f)]
+        public float HorizontalAnimSmoothTime = 0.2f;
+        [Range(0, 1f)]
+        public float VerticalAnimTime = 0.2f;
+        [Range(0,1f)]
+        public float StartAnimTime = 0.5f;
+        [Range(0, 1f)]
+        public float StopAnimTime = 0.1f;
 
         void Start(){
             Cursor.lockState = CursorLockMode.Locked;
@@ -24,12 +37,10 @@ namespace Controller
 
         void Update()
         {
-            // sphere check ground
-            isGround = Physics.CheckSphere(groundCheck.position, 0.2f, layer);
-
+            isGround = Controller.isGrounded;
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
-
+            
             // Player face to camera direction
             Vector3 move = new Vector3(horizontal, 0f, vertical).normalized;
             float angle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -53,6 +64,27 @@ namespace Controller
             fall.y += gravity * Time.deltaTime;
 
             Controller.Move(fall * Time.deltaTime);
+            //Calculate Input Vectors
+            InputX = Input.GetAxis ("Horizontal");
+            InputZ = Input.GetAxis ("Vertical");
+
+            //anim.SetFloat ("InputZ", InputZ, VerticalAnimTime, Time.deltaTime * 2f);
+            //anim.SetFloat ("InputX", InputX, HorizontalAnimSmoothTime, Time.deltaTime * 2f);
+
+            //Calculate the Input Magnitude
+            Speed = new Vector2(InputX, InputZ).sqrMagnitude;
+
+            //Physically move player
+
+            if (Speed > allowPlayerRotation) {
+                anim.SetFloat ("Blend", Speed, StartAnimTime, Time.deltaTime);
+                
+            } else if (Speed < allowPlayerRotation) {
+                anim.SetFloat ("Blend", Speed, StopAnimTime, Time.deltaTime);
+            }
+            
         }
-    }
+        
+        
+	}
 }
