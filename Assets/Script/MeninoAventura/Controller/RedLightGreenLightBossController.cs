@@ -1,11 +1,12 @@
-﻿using Model;
+﻿using Core;
+using Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Controller
 {
-    public class RedLightGreenLightBossController : MonoBehaviour
+    public class RedLightGreenLightBossController : BaseController
     {
         public GameObject headBoss;
         public AudioClip audioClip;
@@ -22,6 +23,13 @@ namespace Controller
         void Update()
         {
             bossModel.HeadRotate();
+            if (bossModel.getIsSing())
+            {
+                FirstLevelController.allowRun = true;
+            }
+            else {
+                FirstLevelController.allowRun = false;
+            }
         }
     }
 }

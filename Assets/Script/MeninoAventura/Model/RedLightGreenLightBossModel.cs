@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Model
 {
-    public class RedLightGreenLightBossModel
+    public class RedLightGreenLightBossModel : BaseModel
     {
         public GameObject headBoss;
         public AudioSource song;
@@ -13,6 +13,7 @@ namespace Model
         private int rotateDirection;
         public int minTimeSong, maxTimeSong, minTimeLook, maxTimeLook;
         private float timeWait;
+        private bool isSing;
 
         public RedLightGreenLightBossModel(GameObject gameObject, AudioSource audioSource)
         {
@@ -25,7 +26,8 @@ namespace Model
             this.minTimeLook = 2;
             this.maxTimeLook = 4;
             this.timeWait = 5;
-            song.Play();
+            this.isSing = true;
+            this.song.Play();
         }
 
         public void HeadRotate()
@@ -40,16 +42,25 @@ namespace Model
             {
                 rotateDirection = -1;
                 timeWait = Random.Range(minTimeLook, maxTimeLook);
-                Debug.Log("Time look: " + timeWait);
-                song.Pause();
+                IsSing(false);
+                this.song.Pause();
             }
             else if (rotation < 2 && rotateDirection == -1)
             {
                 rotateDirection = 1;
                 timeWait = Random.Range(minTimeSong, maxTimeSong);
-                Debug.Log("Time sing: " + timeWait);
-                song.Play();
+                IsSing(true);
+                this.song.Play();
             }
+        }
+
+        public void IsSing(bool IsSing)
+        {
+            this.isSing = IsSing;
+        }
+        public bool getIsSing()
+        {
+            return this.isSing;
         }
     }
 }
