@@ -39,7 +39,6 @@ namespace Controller
             }
         }
 
-
         public void Lose()
         {
             Debug.Log("Lose");
