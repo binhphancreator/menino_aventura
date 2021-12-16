@@ -22,14 +22,21 @@ namespace Controller
 
         void Update()
         {
-            bossModel.HeadRotate();
-            if (bossModel.getIsSing())
+            if (FirstLevelController.isPlaying)
             {
-                FirstLevelController.allowRun = true;
+                bossModel.HeadRotate();
+                if (bossModel.getIsSing())
+                {
+                    FirstLevelController.allowRun = true;
+                }
+                else
+                {
+                    FirstLevelController.allowRun = false;
+                }
             }
             else
             {
-                FirstLevelController.allowRun = false;
+                bossModel.song.Pause();
             }
         }
     }
