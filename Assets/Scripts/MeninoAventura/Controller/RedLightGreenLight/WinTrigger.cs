@@ -1,24 +1,24 @@
 ﻿using Controller;
+using Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinTrigger : MonoBehaviour
+namespace Controller
 {
-    FirstLevelController firstLevelController;
-
-    private void Start()
+    public class WinTrigger : BaseController
     {
-        firstLevelController = new FirstLevelController();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
+        private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Win");
-            firstLevelController.setIsPlaying(false);
-            Destroy(gameObject);
+            if (other.gameObject.tag == "Player")
+            {
+                if(FirstLevelController.isPlaying)
+                {
+                    FirstLevelController.isPlaying = false;
+                    Destroy(gameObject);
+                    Debug.Log("Win");
+                }
+            }
         }
     }
 }
