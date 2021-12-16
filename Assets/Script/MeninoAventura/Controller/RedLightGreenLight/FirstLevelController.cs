@@ -7,23 +7,26 @@ namespace Controller
 {
     public class FirstLevelController : BaseController
     {
-        private bool isPlaying;
+        public static bool isPlaying, isStart;
+        public GameObject barrier;
         public static bool allowRun;
         private void Start()
         {
-            isPlaying = true;
-            allowRun = true;
+            isStart = false;
+            isPlaying = false;
+            allowRun = false;
         }
         private void Update()
         {
-            Debug.Log("Allow Run: " + allowRun);
-            checkMove();
-        }
-
-        public void setIsPlaying(bool newState)
-        {
-            isPlaying = newState;
-            Debug.Log(isPlaying);
+            Debug.Log("Is playing: " + isPlaying);
+            if(isStart)
+            {
+                RemoveBarrier();
+            }
+            if (isPlaying)
+            {
+                checkMove();
+            }
         }
 
         public void checkMove()
@@ -39,10 +42,19 @@ namespace Controller
             }
         }
 
-        public void Lose()
+        public static void Lose()
         {
             Debug.Log("Lose");
             isPlaying = false;
+        }
+
+        public void RemoveBarrier()
+        {
+            if (TimeController.seconds > 6)
+            {
+                Destroy(barrier);
+            }
+
         }
     }
 }

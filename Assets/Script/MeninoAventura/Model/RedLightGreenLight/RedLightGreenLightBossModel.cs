@@ -20,14 +20,13 @@ namespace Model
             this.headBoss = gameObject;
             this.song = audioSource;
             this.rotateSpeed = 150f;
-            this.rotateDirection = 1;
+            this.rotateDirection = -1;
             this.minTimeSong = 2;
             this.maxTimeSong = 8;
             this.minTimeLook = 2;
             this.maxTimeLook = 4;
-            this.timeWait = 5;
+            this.timeWait = Random.Range(minTimeSong, maxTimeSong); ;
             this.isSing = true;
-            this.song.Play();
         }
 
         public void HeadRotate()
