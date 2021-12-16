@@ -54,7 +54,6 @@ namespace Controller
             {
                 Destroy(barrier);
             }
-
         }
     }
 }

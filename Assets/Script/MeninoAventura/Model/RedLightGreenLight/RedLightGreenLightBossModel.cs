@@ -25,7 +25,7 @@ namespace Model
             this.maxTimeSong = 8;
             this.minTimeLook = 2;
             this.maxTimeLook = 4;
-            this.timeWait = Random.Range(minTimeSong, maxTimeSong); ;
+            this.timeWait = Random.Range(minTimeSong, maxTimeSong);
             this.isSing = true;
         }
 
