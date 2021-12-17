@@ -10,15 +10,15 @@ namespace Controller
         public static bool isPlaying, isStart;
         public GameObject barrier;
         public static bool allowRun;
+        public MenuController menuController;
         private void Start()
         {
             isStart = false;
             isPlaying = false;
-            allowRun = false;
+            allowRun = true;
         }
         private void Update()
         {
-            Debug.Log("Is playing: " + isPlaying);
             if(isStart)
             {
                 RemoveBarrier();
@@ -42,10 +42,25 @@ namespace Controller
             }
         }
 
-        public static void Lose()
+        public void Win()
+        {
+            Debug.Log("Win");
+            Cursor.lockState = CursorLockMode.None;
+            menuController.messageText.text = "You win!";
+            isPlaying = false;
+            isStart = false;
+            menuController.ShowMenu();
+        }
+
+        public void Lose()
         {
             Debug.Log("Lose");
+            Cursor.lockState = CursorLockMode.None;
+            menuController.messageText.text = "You lose!";
             isPlaying = false;
+            isStart = false;
+            menuController.ShowMenu();
+
         }
 
         public void RemoveBarrier()

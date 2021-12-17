@@ -8,15 +8,15 @@ namespace Controller
 {
     public class WinTrigger : BaseController
     {
+        public FirstLevelController firstLevelController;
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.tag == "Player")
             {
                 if(FirstLevelController.isPlaying)
                 {
-                    FirstLevelController.isPlaying = false;
+                    firstLevelController.Win();
                     Destroy(gameObject);
-                    Debug.Log("Win");
                 }
             }
         }

@@ -8,17 +8,7 @@ namespace Controller
 {
     public class RedLightGreenLightBossController : BaseController
     {
-        public GameObject headBoss;
-        public AudioClip audioClip;
-        AudioSource song;
-        private RedLightGreenLightBossModel bossModel;
-
-        private void Start()
-        {
-            song = gameObject.AddComponent<AudioSource>();
-            song.clip = audioClip;
-            bossModel = new RedLightGreenLightBossModel(headBoss, song);
-        }
+        public RedLightGreenLightBossModel bossModel;
 
         void Update()
         {
