@@ -73,7 +73,6 @@ using Core;
 
             if(isGround && fall.y < 0){
                 fall.y = -3f; 
-                Debug.Log("test");
             }
 
             // jump
