@@ -14,6 +14,7 @@ namespace Controller
         public Animator playerAnimator;
         public Model.Player model;
         public Rigidbody rigidbodyPlayer;
+        public bool grounded ;
 
         void Start() {
             init();
@@ -37,7 +38,9 @@ namespace Controller
         void Update()
         {
             movePlayerBycameraTransformeraDirection();
+
             jump();
+            grounded = Controller.isGrounded;
         }
 
         private void movePlayerBycameraTransformeraDirection()
@@ -59,7 +62,7 @@ namespace Controller
         private void jump()
         {
             if(Controller.isGrounded && model.fall.y < 0){
-                model.fall.y = -3f; 
+                model.fall.y = -10f; 
             }
 
             // jump
