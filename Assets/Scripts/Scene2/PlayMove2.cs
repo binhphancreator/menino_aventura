@@ -79,7 +79,6 @@ public class PlayMove2 : MonoBehaviour
 
             if(isGround && fall.y < 0){
                 fall.y = -3f; 
-                Debug.Log("test");
             }
 
             // jump
