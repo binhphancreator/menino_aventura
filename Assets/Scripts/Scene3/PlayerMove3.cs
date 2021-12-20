@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class PlayerMove3 : MonoBehaviour
 {
-     public float InputX;
+        public float InputX;
 	    public float InputZ;
-        public float MoveSpeed = 5f;
-        public CharacterController Controller;
-        public Transform cam;
-        public float gravity = -50f;
-        public Vector3 fall;
-        public float jumpHigh = 1f;
-        //public Transform groundCheck;
-        public LayerMask layer;
-        public bool isGround;
-        public Animator anim;
-        public float Speed;
-        public float allowPlayerRotation = 0.1f;
-        private Rigidbody rb;
         public Vector3 checkPoint;
+        public float MoveSpeed = 5f;
+        public float gravity = -50f;
+        public float jumpHigh = 1f;
+        public Vector3 fall;
+        public bool isGround;
+        public float Speed;
+        float allowPlayerRotation = 0.1f;
+        private Rigidbody rb;
+        public AudioSource runSound,dieSound;
+        public CharacterController Controller;
+        public Animator anim;
+        // public GameObject player;
         Game3Controller gameController;
 
         [Header("Animation Smoothing")]
@@ -36,6 +35,7 @@ public class PlayerMove3 : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             rb = GetComponent<Rigidbody>();
             gameController = FindObjectOfType<Game3Controller>();
+
             rb.freezeRotation = true;
             rb.useGravity = false;
             checkPoint = transform.position;
@@ -47,9 +47,21 @@ public class PlayerMove3 : MonoBehaviour
 
         public void LoadCheckPoint()
         {
+            dieSound.Play();
             transform.position = checkPoint ;
             Physics.SyncTransforms();
+            // player.SetActive(false);
+            // StartCoroutine(Wait(0.25f));
+            
         }
+        // IEnumerator Wait(float time)
+        // {
+        //     Debug.Log("respawn");
+        //     yield return new WaitForSeconds(time);
+        //     player.SetActive(true);
+        //     transform.position = checkPoint ;
+        //     Physics.SyncTransforms();
+        // }
 
         void Update()
         {
@@ -84,8 +96,10 @@ public class PlayerMove3 : MonoBehaviour
 
             // jump
             if(Input.GetKeyDown("up")&& isGround == true||Input.GetKeyDown("w") && isGround == true){
+                
                 fall.y = Mathf.Sqrt(jumpHigh * gravity * -2f);
                 anim.SetBool("isJumping",true);
+                Jumpsound();
             }
             
             if(!isGround){
@@ -110,9 +124,23 @@ public class PlayerMove3 : MonoBehaviour
             if (Speed > allowPlayerRotation) {
                 anim.SetFloat ("Blend", Speed, StartAnimTime, Time.deltaTime);
                 
+                
             } else if (Speed < allowPlayerRotation) {
                 anim.SetFloat ("Blend", Speed, StopAnimTime, Time.deltaTime);
             }
             
         }
+        private void Jumpsound(){
+            runSound.Play();
+        }
+        private void Runsound(){
+            if(Controller.isGrounded){
+                
+                runSound.Play();
+            }
+            else return;
+            
+        }
+
 }
+        
