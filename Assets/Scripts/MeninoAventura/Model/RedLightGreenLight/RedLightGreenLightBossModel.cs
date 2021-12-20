@@ -29,6 +29,7 @@ namespace Model
                 timeWait = Random.Range(minTimeLook, maxTimeLook);
                 IsSing(false);
                 this.song.Pause();
+                
             }
             else if (rotation < 2 && rotateDirection == -1)
             {
