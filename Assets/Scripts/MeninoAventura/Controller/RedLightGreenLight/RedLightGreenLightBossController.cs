@@ -21,7 +21,10 @@ namespace Controller
                 }
                 else
                 {
-                    FirstLevelController.allowRun = false;
+                    if(TimeLevel1Controller.timer > 8)
+                    {
+                        FirstLevelController.allowRun = false;
+                    }
                 }
             }
             else

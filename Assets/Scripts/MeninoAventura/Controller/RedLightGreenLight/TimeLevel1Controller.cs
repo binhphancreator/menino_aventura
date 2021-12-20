@@ -6,6 +6,7 @@ namespace Controller
 {
     public class TimeLevel1Controller : TimeController
     {
+        public GameObject CountDown;
         private void Update()
         {
             string min = minutes < 10 ? "0" + minutes.ToString() : minutes.ToString();
@@ -19,6 +20,7 @@ namespace Controller
             {
                 if(!CountDown())
                 {
+                    Destroy(CountDown);
                     FirstLevelController.isPlaying = true;
                     FirstLevelController.isStart = true;
                 }
