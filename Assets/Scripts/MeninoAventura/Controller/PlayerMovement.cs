@@ -14,7 +14,6 @@ namespace Controller
         public Animator playerAnimator;
         public Model.Player model;
         public Rigidbody rigidbodyPlayer;
-        
 
         void Start() {
             init();
@@ -38,9 +37,7 @@ namespace Controller
         void Update()
         {
             movePlayerBycameraTransformeraDirection();
-
             jump();
-            
         }
 
         private void movePlayerBycameraTransformeraDirection()

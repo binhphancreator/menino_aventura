@@ -7,14 +7,14 @@ namespace Controller
 {
     public class FirstLevelController : BaseController
     {
-        public static bool isPlaying, isStart;
+        public static bool isPlaying = false, isStart = false;
         public GameObject barrier;
         public static bool allowRun;
         public MenuController menuController;
         private void Start()
         {
-            isStart = false;
             isPlaying = false;
+            isStart = false;
             allowRun = true;
         }
         private void Update()
@@ -44,21 +44,19 @@ namespace Controller
 
         public void Win()
         {
+            isPlaying = false;
             Debug.Log("Win");
             Cursor.lockState = CursorLockMode.None;
             menuController.messageText.text = "You win!";
-            isPlaying = false;
-            isStart = false;
             menuController.ShowMenu();
         }
 
         public void Lose()
         {
+            isPlaying = false;
             Debug.Log("Lose");
             Cursor.lockState = CursorLockMode.None;
             menuController.messageText.text = "You lose!";
-            isPlaying = false;
-            isStart = false;
             menuController.ShowMenu();
 
         }
