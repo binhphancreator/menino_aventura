@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Core;
+using UnityEngine.UI;
 
 namespace Controller
 {
@@ -11,11 +12,16 @@ namespace Controller
         public GameObject barrier;
         public static bool allowRun;
         public MenuController menuController;
+        public GameObject enegyBox;
+        public static int score;
+
         private void Start()
         {
             isPlaying = false;
             isStart = false;
             allowRun = true;
+            score = 0;
+            Spawn();
         }
         private void Update()
         {
@@ -44,11 +50,18 @@ namespace Controller
 
         public void Win()
         {
-            isPlaying = false;
-            Debug.Log("Win");
-            Cursor.lockState = CursorLockMode.None;
-            menuController.messageText.text = "You win!";
-            menuController.ShowMenu();
+            if(score < 10)
+            {
+                Lose();
+            }
+            else
+            {
+                isPlaying = false;
+                Debug.Log("Win");
+                Cursor.lockState = CursorLockMode.None;
+                menuController.messageText.text = "You win!";
+                menuController.ShowMenu();
+            }
         }
 
         public void Lose()
@@ -66,6 +79,15 @@ namespace Controller
             if (TimeController.seconds > 6)
             {
                 Destroy(barrier);
+            }
+        }
+
+        public void Spawn()
+        {
+            Vector3 spawnPos = new Vector3(Random.Range(-9, 7), 0, Random.Range(-26, 22));
+            if (enegyBox)
+            {
+                Instantiate(enegyBox, spawnPos, Quaternion.identity);
             }
         }
     }
