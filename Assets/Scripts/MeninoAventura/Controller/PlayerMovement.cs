@@ -5,7 +5,6 @@ using Core;
 
 namespace Controller 
 {
-    [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : BaseController
     {
         public CharacterController Controller;
@@ -34,10 +33,28 @@ namespace Controller
             Physics.SyncTransforms();
         }
 
+        void FixedUpdate() {
+            
+        }
+
         void Update()
         {
-            movePlayerBycameraTransformeraDirection();
+            checkGround();
             jump();
+            movePlayerBycameraTransformeraDirection();
+        }
+
+        private void checkGround()
+        {
+            if(Controller.isGrounded && model.fall.y < 0){
+                model.fall.y = -10f; 
+            }
+            model.fall.y += model.gravity * Time.deltaTime;  
+            Controller.Move(model.fall * Time.deltaTime);
+
+            if(!Controller.isGrounded){
+                playerAnimator.SetBool("isJumping",false);
+            }
         }
 
         private void movePlayerBycameraTransformeraDirection()
@@ -54,40 +71,25 @@ namespace Controller
                 playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, Quaternion.LookRotation(moveDir), 0.3f);
                 Controller.Move(moveDir * model.MoveSpeed * Time.deltaTime);
             }
-        }
-
-        private void jump()
-        {
-            if(Controller.isGrounded && model.fall.y < 0){
-                model.fall.y = -10f; 
-            }
-
-            // jump
-            if(Input.GetButtonDown("Jump") && Controller.isGrounded == true){
-                model.fall.y = Mathf.Sqrt(model.jumpHigh * model.gravity * -2f);
-                playerAnimator.SetBool("isJumping",true);
-            }
-            
-            if(!Controller.isGrounded){
-                playerAnimator.SetBool("isJumping",false);
-            }
-
-            model.fall.y += model.gravity * Time.deltaTime;
-            
-            Controller.Move(model.fall * Time.deltaTime);
-            //Calculate Input Vectors
-            float InputX = Input.GetAxis ("Horizontal");
-            float InputZ = Input.GetAxis ("Vertical");
 
             //Calculate the Input Magnitude
-            float Speed = new Vector2(InputX, InputZ).sqrMagnitude;
+            float Speed = new Vector2(horizontal, vertical).sqrMagnitude;
 
             //Physically move player
 
             if (Speed > model.allowPlayerRotation) {
-                playerAnimator.SetFloat ("Blend", Speed, model.StartAnimTime, Time.deltaTime);
+                playerAnimator.SetFloat("Blend", Speed, model.StartAnimTime, Time.deltaTime);
             } else if (Speed < model.allowPlayerRotation) {
-                playerAnimator.SetFloat ("Blend", Speed, model.StopAnimTime, Time.deltaTime);
+                playerAnimator.SetFloat("Blend", Speed, model.StopAnimTime, Time.deltaTime);
+            }
+        }
+
+        private void jump()
+        {
+            // jump
+            if(Controller.isGrounded && Input.GetButtonDown("Jump")){
+                model.fall.y = Mathf.Sqrt(model.jumpHigh * model.gravity * -2f);
+                playerAnimator.SetBool("isJumping",true);
             }
         }
 	}
