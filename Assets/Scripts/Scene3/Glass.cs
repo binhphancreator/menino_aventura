@@ -5,6 +5,10 @@ using UnityEngine;
 public class Glass : MonoBehaviour
 {
    public float time = 0.1f;
+   public AudioSource breaksound;
+   void Start(){
+	   breaksound = GameObject.Find("/GameController/Sound/die").GetComponent<AudioSource>();
+   }
 
 	void OnCollisionEnter(Collision collision)
 	{
@@ -17,7 +21,9 @@ public class Glass : MonoBehaviour
 			}
 	}
     void Display(){
+		breaksound.Play();
         gameObject.SetActive(false);
+		
     }
 	void Respawn(){
 		GameObject box = (GameObject)Instantiate(gameObject);

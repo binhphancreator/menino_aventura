@@ -14,7 +14,7 @@ namespace Controller
         public Animator playerAnimator;
         public Model.Player model;
         public Rigidbody rigidbodyPlayer;
-        public bool grounded ;
+        
 
         void Start() {
             init();
@@ -40,7 +40,7 @@ namespace Controller
             movePlayerBycameraTransformeraDirection();
 
             jump();
-            grounded = Controller.isGrounded;
+            
         }
 
         private void movePlayerBycameraTransformeraDirection()

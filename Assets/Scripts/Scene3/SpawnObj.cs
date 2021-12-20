@@ -32,7 +32,7 @@ public class SpawnObj : MonoBehaviour
     {
         float randZpos = Random.Range(65f, 75f);
         Vector3 spawnPos = new Vector3(0, 25f, randZpos);
-        Debug.Log("1");
+        
             Instantiate(fallObj, spawnPos, Quaternion.identity);
         
     }

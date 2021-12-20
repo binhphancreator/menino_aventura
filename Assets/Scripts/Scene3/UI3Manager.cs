@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class UI3Manager : MonoBehaviour
 {
+    public GameObject panel;
     public GameObject gameoverPanel;
     public GameObject gamewinPanel;
+
+    void Start(){
+        panel.SetActive(true);
+    }
 
     public  void ShowGameOverPanel(bool isShow){
         if(gameoverPanel){

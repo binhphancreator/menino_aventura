@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
 	public float speed = 3f;
 	public float offset = 0f; //If yo want to modify the position at the start 
     public bool rot = true;
-
 	private bool isForward = true; //If the movement is out
 	private Vector3 startPos;
     
