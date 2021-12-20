@@ -8,7 +8,7 @@ namespace Model
     public class RedLightGreenLightBossModel : BaseModel
     {
         public GameObject headBoss;
-        public AudioSource song;
+        public AudioSource GreenLight, RedLight;
         public float rotateSpeed;
         public int rotateDirection;
         public int minTimeSong, maxTimeSong, minTimeLook, maxTimeLook;
@@ -28,7 +28,7 @@ namespace Model
                 rotateDirection = -1;
                 timeWait = Random.Range(minTimeLook, maxTimeLook);
                 IsSing(false);
-                this.song.Pause();
+                RedLight.Play();
                 
             }
             else if (rotation < 2 && rotateDirection == -1)
@@ -36,7 +36,7 @@ namespace Model
                 rotateDirection = 1;
                 timeWait = Random.Range(minTimeSong, maxTimeSong);
                 IsSing(true);
-                this.song.Play();
+                GreenLight.Play();
             }
         }
 
