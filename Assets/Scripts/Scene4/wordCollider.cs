@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
-public class testCollier : MonoBehaviour
+public class wordCollider : MonoBehaviour
 {
     // Start is called before the first frame update
     // TextMeshPro tm;
-    GameObject textobj;
+    public TextMeshPro tmp;
     TextMeshPro tm;
     Color cl;
     void Start()
@@ -16,18 +15,11 @@ public class testCollier : MonoBehaviour
         cl = tm.color;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void OnCollisionEnter(Collision collision)
 	{
 			if (collision.gameObject.tag == "Player")
 			{
-				// StartCoroutine(Respawn(0.0f));
-				Debug.Log("oke");
-                tm.color = new Color(255, 255, 255);
+                tm.color = new Color(255, 255, 255, 255);
 			}
 	}
     void OnCollisionExit(Collision collision){
@@ -36,7 +28,7 @@ public class testCollier : MonoBehaviour
     void OnCollisionStay(Collision collisionInfo)
     {
         if(Input.GetKeyDown(KeyCode.F)){
-            Debug.Log(tm.text);
+            tmp.GetComponent<TextControll>().checkWord(tm.text);
         }
     }
 }
