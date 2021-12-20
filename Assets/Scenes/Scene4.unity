@@ -4419,8 +4419,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285756275
-  m_fontColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+    rgba: 4290248464
+  m_fontColor: {r: 0.06132078, g: 1, b: 0.71671355, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5395,7 +5395,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464718766}
   m_LocalRotation: {x: 0.0033314934, y: 0.7070825, z: -0.70708245, w: 0.0075929607}
-  m_LocalPosition: {x: 0, y: 0, z: 18.73112}
+  m_LocalPosition: {x: 0, y: 0, z: 18.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 952637559}
@@ -5403,7 +5403,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90.345, y: 269.558, z: 90.44299}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.4654374, y: -0.65161306}
+  m_AnchoredPosition: {x: 7.47, y: -0.65}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0, y: 0}
 --- !u!1001 &1512409656
@@ -8871,8 +8871,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284966759
-  m_fontColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+    rgba: 4290734591
+  m_fontColor: {r: 1, g: 0.41037738, b: 0.7472184, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
