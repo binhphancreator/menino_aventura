@@ -11,8 +11,8 @@ public class Enemy : MonoBehaviour
     public bool rot = true;
 	private bool isForward = true; //If the movement is out
 	private Vector3 startPos;
+	public Controller.PlayerMovement player;
     
-   
     void Awake()
     {
 		startPos = transform.position;
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-			col.gameObject.GetComponent<PlayerMove3>().LoadCheckPoint();
+			player.LoadCheckPoint();
 		}
 	}
 }

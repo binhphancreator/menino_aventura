@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class KillZone : MonoBehaviour
 {
+    public Controller.PlayerMovement player;
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Player")
         {
-			col.gameObject.GetComponent<PlayMove2>().LoadCheckPoint();
+			player.LoadCheckPoint();
 		}
 	}
 }

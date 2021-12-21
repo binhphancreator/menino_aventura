@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FinishPoint : MonoBehaviour
 {
-    UI2Manager ui2;
-    Game2Controller gc;
+    UIManage ui;
+    GameManage gc;
 
     private void Start()
     {
-        ui2 = FindObjectOfType<UI2Manager>();
-        gc = FindObjectOfType<Game2Controller>();
+        ui = FindObjectOfType<UIManage>();
+        gc = FindObjectOfType<GameManage>();
     }
     void OnCollisionEnter(Collision col)
     {
@@ -18,7 +18,7 @@ public class FinishPoint : MonoBehaviour
         {
             
             Cursor.lockState = CursorLockMode.None;
-			ui2.ShowGameWinPanel(true);
+			ui.ShowGameWinPanel(true);
             gc.SetGameOverState(true);
 		}
 	}
