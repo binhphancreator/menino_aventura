@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI2Manager : MonoBehaviour
+public class UIManage : MonoBehaviour
 {
+    public GameObject panel;
     public GameObject gameoverPanel;
     public GameObject gamewinPanel;
+    void Start(){
+        panel.SetActive(true);
+    }
 
     public  void ShowGameOverPanel(bool isShow){
         if(gameoverPanel){
@@ -17,5 +21,4 @@ public class UI2Manager : MonoBehaviour
             gamewinPanel.SetActive(isShow);
         }
     }
-
 }

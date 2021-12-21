@@ -6,24 +6,25 @@ public class CharacterSkinController : MonoBehaviour
 {
     Animator animator;
     Renderer[] characterMaterials;
-
     public Texture2D[] albedoList;
     [ColorUsage(true,true)]
+    
     public Color[] eyeColors;
     public enum EyePosition { normal, happy, angry, dead}
     public EyePosition eyeState;
+    public AudioSource runSound;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        characterMaterials = GetComponentsInChildren<Renderer>();
-        
+        characterMaterials = GetComponentsInChildren<Renderer>();        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             //ChangeMaterialSettings(0);
@@ -65,6 +66,9 @@ public class CharacterSkinController : MonoBehaviour
                 characterMaterials[i].material.SetTexture("_MainTex",albedoList[index]);
         }
     }
+    private void Runsound(){ 
+                runSound.Play();
+        }
 
     void ChangeEyeOffset(EyePosition pos)
     {

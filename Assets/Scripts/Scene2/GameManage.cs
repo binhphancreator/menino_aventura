@@ -1,30 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-
-public class TimeManager3 : MonoBehaviour
+public class GameManage : MonoBehaviour
 {
-    
-    public float timeRemaining = 10;
+    public string replayScene;
+    public bool isGameOver;
+    public bool checkTime = true;
     public bool timerIsRunning = false;
+    public float timeRemaining = 180;
     public Text timeText;
-    UI3Manager ui3;
-    bool isGameover;
-    Game3Controller gc;
-
+    // public TextMeshPro timeTextMesh;
+    UIManage ui;
     private void Start()
     {
         // Starts the timer automatically
         timerIsRunning = true;
-        ui3 = FindObjectOfType<UI3Manager>();
-        gc = FindObjectOfType<Game3Controller>();
+        ui = FindObjectOfType<UIManage>();
     }
-
-    void Update()
-    {
-        if(gc.IsGameOver()) return;
+    
+    void Update(){
+        if(isGameOver||!checkTime){
+            return;
+        }
         if (timerIsRunning)
         {
             if (timeRemaining > 0)
@@ -36,14 +37,25 @@ public class TimeManager3 : MonoBehaviour
             {
                 Debug.Log("Time has run out!");
                 Cursor.lockState = CursorLockMode.None;
-                ui3.ShowGameOverPanel(true);
-                gc.SetGameOverState(true);
+                ui.ShowGameOverPanel(true);
+                SetGameOverState(true);
                 timeRemaining = 0;
                 timerIsRunning = false;
             }
         }
     }
-
+    public void Replay(){
+        SceneManager.LoadScene(replayScene);
+    }
+    public void Next(){
+        SceneManager.LoadScene("StartGame");
+    }
+    public void SetGameOverState(bool state){
+        isGameOver = state;
+    }
+    public bool IsGameOver(){
+        return isGameOver;
+    }
     void DisplayTime(float timeToDisplay)
     {
         timeToDisplay += 1;
@@ -52,5 +64,7 @@ public class TimeManager3 : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        // timeTextMesh.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
 }

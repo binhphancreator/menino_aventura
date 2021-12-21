@@ -11,7 +11,7 @@ namespace Model
         public float gravity = -50f;
         public Vector3 fall;
         public float jumpHigh = 1f;
-        public bool isGround;
+        public bool lockVertical = false;
         public float allowPlayerRotation = 0.1f;
         public Vector3 checkPoint;
 

@@ -27,7 +27,7 @@ public class wordCollider : MonoBehaviour
     }
     void OnCollisionStay(Collision collisionInfo)
     {
-        if(Input.GetKeyDown(KeyCode.F)){
+        if(Input.GetButtonDown("Jump")){
             tmp.GetComponent<TextControll>().checkWord(tm.text);
         }
     }
