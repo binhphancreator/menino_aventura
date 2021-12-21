@@ -29,7 +29,7 @@ public class TextControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(winCondition == 1){
+        if(winCondition == 4){
             Cursor.lockState = CursorLockMode.None;
 			ui.ShowGameWinPanel(true);
             gc.SetGameOverState(true);

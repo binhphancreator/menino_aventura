@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class wordCollider : MonoBehaviour
+public class WordCollider : MonoBehaviour
 {
     // Start is called before the first frame update
     // TextMeshPro tm;
