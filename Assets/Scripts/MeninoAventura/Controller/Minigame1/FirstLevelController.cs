@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Controller
 {
@@ -33,6 +34,10 @@ namespace Controller
             {
                 checkMove();
             }
+            if (Input.GetKey("escape"))
+            {
+                SceneManager.LoadScene("StartGame");
+            }
         }
 
         public void checkMove()
@@ -45,13 +50,6 @@ namespace Controller
                 {
                     Lose();
                 }
-            }
-            else if(Input.GetKey("escape"))
-            {
-                isPlaying = false;
-                Cursor.lockState = CursorLockMode.None;
-                menuController.messageText.text = "Pause";
-                menuController.ShowMenu();
             }
         }
 
