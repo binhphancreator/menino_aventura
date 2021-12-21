@@ -15,9 +15,10 @@ namespace Controller
         public MenuController menuController;
         public GameObject enegyBox;
         public static int score;
-        public int winScore = 5;
+        public int winScore;
         private void Start()
         {
+            winScore = 5;
             isPlaying = false;
             isStart = false;
             allowRun = true;
