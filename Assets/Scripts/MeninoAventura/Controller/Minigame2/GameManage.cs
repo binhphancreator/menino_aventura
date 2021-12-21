@@ -43,6 +43,10 @@ public class GameManage : MonoBehaviour
                 timerIsRunning = false;
             }
         }
+        if(Input.GetKey("escape"))
+            {
+                SceneManager.LoadScene("StartGame");
+            }
     }
     public void Replay(){
         SceneManager.LoadScene(replayScene);
