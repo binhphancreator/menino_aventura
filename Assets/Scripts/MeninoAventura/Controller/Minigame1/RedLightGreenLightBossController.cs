@@ -27,10 +27,6 @@ namespace Controller
                     }
                 }
             }
-            else
-            {
-                bossModel.song.Pause();
-            }
         }
     }
 }
