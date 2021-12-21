@@ -15,7 +15,7 @@ namespace Controller
         public MenuController menuController;
         public GameObject enegyBox;
         public static int score;
-
+        public int winScore = 5;
         private void Start()
         {
             isPlaying = false;
@@ -56,7 +56,7 @@ namespace Controller
         public void Win()
         {
             isStart = false;
-            if (score < 8)
+            if (score < winScore)
             {
                 Lose();
             }
