@@ -46,11 +46,19 @@ namespace Controller
                     Lose();
                 }
             }
+            else if(Input.GetKey("escape"))
+            {
+                isPlaying = false;
+                Cursor.lockState = CursorLockMode.None;
+                menuController.messageText.text = "Pause";
+                menuController.ShowMenu();
+            }
         }
 
         public void Win()
         {
-            if(score < 10)
+            isStart = false;
+            if (score < 8)
             {
                 Lose();
             }
@@ -66,6 +74,7 @@ namespace Controller
 
         public void Lose()
         {
+            isStart = false;
             isPlaying = false;
             Debug.Log("Lose");
             Cursor.lockState = CursorLockMode.None;

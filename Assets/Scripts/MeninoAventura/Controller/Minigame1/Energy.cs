@@ -8,9 +8,11 @@ public class Energy : MonoBehaviour
 {
     private Text scoreTxt;
     private FirstLevelController firstLevelController;
+    public AudioSource audio;
 
     private void Start()
     {
+        audio = GameObject.Find("EnergySfx").GetComponent<AudioSource>();
         scoreTxt = GameObject.Find("Score").GetComponent<Text>();
         firstLevelController = GameObject.Find("Controller").GetComponent<FirstLevelController>();
     }
@@ -19,6 +21,7 @@ public class Energy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            audio.Play();
             FirstLevelController.score++;
             scoreTxt.text = "Score: " + FirstLevelController.score;
             Destroy(gameObject);
