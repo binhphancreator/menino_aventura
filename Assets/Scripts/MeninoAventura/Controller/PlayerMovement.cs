@@ -42,6 +42,7 @@ namespace Controller
         {
             isGround = Controller.isGrounded;
             if(gc.IsGameOver()) {
+                playerAnimator.SetFloat("Blend", 0, model.StopAnimTime, Time.deltaTime);
                 Controller.Move(moveDir*0);
                 return;
             }

@@ -33,25 +33,24 @@ public class FallObj : MonoBehaviour
 	public float offset = 0f; //If yo want to modify the position at the start 
 	private Vector3 startPos;
     Rigidbody m_rb;
+    GameManage gc;
    
 
    void Start()
     {
+        gc = FindObjectOfType<GameManage>();
         m_rb = GetComponent<Rigidbody> ();
+        startPos = transform.position;
+        transform.position += Vector3.up * offset;
 
     }
-    void Awake()
-    {
-		startPos = transform.position;
-		
-			transform.position += Vector3.up * offset;
-		
-	}
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(gc.IsGameOver()) {
+                return;
+            }
         transform.position -= Vector3.up * Time.deltaTime * speed ;
 				
 		

@@ -12,9 +12,13 @@ public class Enemy : MonoBehaviour
 	private bool isForward = true; //If the movement is out
 	private Vector3 startPos;
 	public Controller.PlayerMovement player;
+	GameManage gc;
+	AudioSource effectSound;
     
-    void Awake()
+    void Start()
     {
+		gc = FindObjectOfType<GameManage>();
+		effectSound = gameObject.GetComponent<AudioSource>();
 		startPos = transform.position;
 		if (horizontal)
 			transform.position += Vector3.up * offset;
@@ -25,7 +29,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		if(gc.IsGameOver()) {
+				effectSound.Stop();
+                return;
+            }
 
 		if (horizontal)
 		{
