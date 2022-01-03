@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: d69071256986a1c4bb4872d222c6ae6e, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9aa8ed67591432941bb76f12eb23ff91, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -318,7 +318,7 @@ RectTransform:
   m_GameObject: {fileID: 9852720}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1632209225}
   - {fileID: 487056623}
@@ -2259,7 +2259,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266995508}
-  m_LocalRotation: {x: -0.015830895, y: 0.9841414, z: -0.12115332, w: -0.128596}
+  m_LocalRotation: {x: -0.015830891, y: 0.98414147, z: -0.12115333, w: -0.128596}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4872,7 +4872,7 @@ RectTransform:
   m_GameObject: {fileID: 755436699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 2142403088}
   - {fileID: 1892289379}
@@ -4950,7 +4950,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759268918}
-  m_LocalRotation: {x: -0.013489178, y: 0.98618233, z: -0.103232265, w: -0.12886268}
+  m_LocalRotation: {x: -0.0134891765, y: 0.98618233, z: -0.103232265, w: -0.12886268}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6907,7 +6907,7 @@ RectTransform:
   m_GameObject: {fileID: 935987115}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1740481967}
   - {fileID: 1675724225}
@@ -7094,7 +7094,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990808931}
-  m_LocalRotation: {x: -0.011149201, y: 0.98789287, z: -0.08532448, w: -0.1290862}
+  m_LocalRotation: {x: -0.0111492, y: 0.98789287, z: -0.08532449, w: -0.1290862}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9576,6 +9576,8 @@ MonoBehaviour:
   timerIsRunning: 0
   timeRemaining: 180
   timeText: {fileID: 0}
+  scoreText: {fileID: 0}
+  themeSound: {fileID: 126202946}
 --- !u!4 &1599791071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4302042920928744, guid: c45c41f59dbb9894cb895ef86d325026,
@@ -10965,7 +10967,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864078454}
-  m_LocalRotation: {x: -0.014858964, y: 0.9850286, z: -0.113716036, w: -0.12871104}
+  m_LocalRotation: {x: -0.014858962, y: 0.9850286, z: -0.113716036, w: -0.12871104}
   m_LocalPosition: {x: -0.12849104, y: 0.0000038146973, z: -0.48320818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11516,7 +11518,7 @@ RectTransform:
   m_GameObject: {fileID: 1923095884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 18033610}
   - {fileID: 486781292}
@@ -12159,7 +12161,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a58be401d4e270d4fae3a8c0cdda8562, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -12487,11 +12489,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96

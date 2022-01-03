@@ -12,9 +12,11 @@ public class Movable : MonoBehaviour
 
 	private bool isForward = true; //If the movement is out
 	private Vector3 startPos;
+	GameManage gc;
    
-    void Awake()
+    void Start()
     {
+		gc = FindObjectOfType<GameManage>();
 		startPos = transform.position;
 		if (horizontal)
 			transform.position += Vector3.right * offset;
@@ -25,7 +27,9 @@ public class Movable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		if(gc.IsGameOver()) {
+                return;
+            }
 
 		if (horizontal)
 		{

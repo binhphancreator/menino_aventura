@@ -10,6 +10,7 @@ public class TextControll : MonoBehaviour
     // Start is called before the first frame update
     Color32 c0 = new Color(255,0,0,255);
     Color32 c1 = new Color(0,255,0,255);
+    public AudioSource incorrectSound,correctSound;
     public Text score;
     TextMeshPro tmp;
     UIManage ui;
@@ -50,9 +51,11 @@ public class TextControll : MonoBehaviour
         int step = i;
         Color32 c;
         if (status == true){
+            correctSound.Play();
             c = c1;
             i = step + 1; 
         } else {
+            incorrectSound.Play();
             c = c0;
         }
         // tmp.ForceMeshUpdate();

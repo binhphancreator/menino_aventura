@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class FallPlat : MonoBehaviour
 {
+	public float timeRespawn = 5.0f;
 
 	void OnCollisionEnter(Collision collision)
 	{
@@ -11,7 +14,7 @@ public class FallPlat : MonoBehaviour
 			{
 				// StartCoroutine(Respawn(0.0f));
 				gameObject.SetActive(false);
-				Invoke("Respawn",5);
+				Invoke("Respawn",timeRespawn);
 			}
 	}
 
